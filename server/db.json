@@ -1,0 +1,108 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "name": "Client A",
+      "Type": "Type Client1",
+      "sector": "Métallurgie"
+    },
+    {
+      "id": 2,
+      "name": "Client B",
+      "Type": "Type Client2",
+      "sector": "Transport"
+    },
+    {
+      "id": 3,
+      "name": "Client C",
+      "Type": "Type Client1",
+      "sector": "Voyage"
+    },
+    {
+      "id": 4,
+      "name": "Client D",
+      "Type": "Type Client3",
+      "sector": "Transport"
+    },
+    {
+      "id": 5,
+      "name": "Client E",
+      "Type": "Type Client2",
+      "sector": "Métallurgie"
+    }
+  ],
+  "users": [
+    { "name": "admin", "password": "admin", "client": 1, "admin": true },
+    { "name": "Utilisateur2", "password": "ddd", "client": 2, "admin": false },
+    { "name": "Utilisateur3", "password": "admaaain", "client": 3, "admin": true }
+  ],
+  "events": [
+    {
+      "label": "Tombe",
+      "category": "Hall1",
+      "order": 1,
+      "type": 1
+    },
+    {
+      "label": "Annonce",
+      "category": "Hall2",
+      "order": 2,
+      "type": 1
+    },
+    {
+      "label": "Marche",
+      "category": "Hall1",
+      "order": 1,
+      "type": 1
+    },
+    {
+      "label": "Court",
+      "category": "Hall4",
+      "order": 1,
+      "type": 1
+    }
+  ],
+  "experiences": [
+    {
+      "id": 5,
+      "user": 1,
+      "start": "04/10/2017 17: 02",
+      "end": "04/10/2017 16: 55"
+    },
+    {
+      "id": 4,
+      "user": 1,
+      "start": "04/10/2017 16: 35",
+      "end": "04/10/2017 16: 55"
+    },
+    {
+      "id": 3,
+      "user": 1,
+      "start": "04/10/2017 16: 00",
+      "end": "04/10/2017 16: 20"
+    },
+    {
+      "id": 2,
+      "user": 1,
+      "start": "04/10/2017 15: 22",
+      "end": "04/10/2017 15: 42"
+    },
+    {
+      "id": 1,
+      "user": 1,
+      "start": "04/10/2017 14: 52",
+      "end": "04/10/2017 15: 02"
+    }
+  ],
+  "event-types": [
+    { "id": 1, "label": "Ponctuel" },
+    { "id": 2, "label": "Etat" }
+  ],
+  "client-types": [
+    { "id": 1, "label": "Type Client 1" },
+    { "id": 2, "label": "Type Client 2" },
+    { "id": 3, "label": "Type Client 3" },
+    { "id": 4, "label": "Type Client 4" },
+    { "id": 5, "label": "Type Client 5" }
+  ]
+}
