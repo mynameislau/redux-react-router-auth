@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 
 const mapStateToProps = state => ({
-	connected: state.connected
+	token: state.auth.token
 });
 
 export default connect(mapStateToProps)(
-	({ children, connected }) => (connected ? children : <Redirect to="/login" />)
+	({ children, token }) =>
+		token ? children : <Redirect to="/login" />
 );
