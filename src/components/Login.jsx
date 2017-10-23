@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Card, CardContent, TextField, Button } from 'material-ui';
-import { requestLogin } from '../redux/actions';
+import { Card, CardContent, TextField, Button, Grid } from 'material-ui';
+import { loginRequest } from '../redux/actions';
+import '../App.css';
 
 const mapDispatchToProps = dispatch => ({
 	onSubmit: credentials => {
 		console.log(credentials);
-		dispatch(requestLogin(credentials));
+		dispatch(loginRequest(credentials));
 	}
 });
 
@@ -44,7 +45,7 @@ class Login extends Component {
 
 	render () {
 		return (
-			<div>
+			<Grid item xs={3} className="main">
 				{this.props.token ? <Redirect to="/" /> : null}
 				<Card>
 					<CardContent>
@@ -74,7 +75,7 @@ class Login extends Component {
 						{this.props.error ? <div>Error: {this.props.error} </div> : null}
 					</CardContent>
 				</Card>
-			</div>
+			</Grid>
 		);
 	}
 }

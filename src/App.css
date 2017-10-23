@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -20,6 +21,27 @@
 
 .App-intro {
   font-size: large;
+}
+
+.App-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-content > * + * {
+  flex-grow: 1;
+}
+
+.main {
+  min-height: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main__content {
+  padding: 1em;
 }
 
 @keyframes App-logo-spin {

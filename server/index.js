@@ -8,7 +8,11 @@ const isAuthorized = req => {
 	console.log(req.path);
 
 	if (/^\/auth\/?$/.test(req.path)) {
-		return true;
+		return 'ok';
+	}
+
+	if (/^\/logout\/?$/.test(req.path)) {
+		return 'ok';
 	}
 
 	console.log('check authorization');
@@ -19,11 +23,18 @@ const isAuthorized = req => {
 	 * }
 	 */
 
+	if (!req.headers.authorization) {
+		return 'noHeader';
+	}
+
+	console.log(req.headers.authorization);
+
 	const encoded = req.headers.authorization.split(' ')[1];
-	const decoded = new Buffer(encoded, 'base64').toString('utf8');
+  const decoded = new Buffer(encoded, 'base64').toString('utf8');
+  console.log(decoded);
 	const id = decoded.split(':')[0];
 
-	return id === 'oui';
+	return id === 'oui' ? 'ok' : 'ko';
 };
 
 server.use(bodyParser.json());
@@ -31,16 +42,31 @@ server.use(bodyParser.urlencoded());
 
 server.use(middlewares);
 server.use((req, res, next) => {
-	if (isAuthorized(req)) {
-		// add your authorization logic here
-		next(); // continue to JSON Server router
+	try {
+		const authorized = isAuthorized(req);
+		if (authorized === 'ok') {
+			next();
+		}
+		else if (authorized === 'ko') {
+			res.sendStatus(403);
+		}
+		else {
+			res.sendStatus(401);
+		}
 	}
-	else {
-		res.sendStatus(401);
+	catch (error) {
+		console.log(error);
+		res.sendStatus(500);
 	}
 });
 
 // Add custom routes before JSON Server router
+server.post('/logout', (req, res) => {
+	res.json({
+		success: true
+	});
+});
+
 server.post('/auth', (req, res) => {
 	console.log(req.body);
 

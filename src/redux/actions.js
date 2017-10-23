@@ -6,7 +6,11 @@ export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_ERROR = 'LOGOUT_ERROR';
 
-export const requestLogout = token => {
+export const CLIENTS_REQUEST = 'CLIENTS_REQUEST';
+export const CLIENTS_SUCCESS = 'CLIENTS_SUCCESS';
+export const CLIENTS_ERROR = 'CLIENTS_ERROR';
+
+export const logoutRequest = token => {
 	return {
 		type: LOGOUT_REQUEST,
 		payload: token
@@ -26,7 +30,7 @@ export const logoutError = error => {
 	};
 };
 
-export const requestLogin = credentials => {
+export const loginRequest = credentials => {
 	return {
 		type: LOGIN_REQUEST,
 		payload: credentials
@@ -43,6 +47,27 @@ export const loginSuccess = token => {
 export const loginError = error => {
 	return {
 		type: LOGIN_ERROR,
+		payload: error
+	};
+};
+
+export const clientsRequest = token => {
+	return {
+		type: CLIENTS_REQUEST,
+		payload: token
+	};
+};
+
+export const clientsSuccess = clients => {
+	return {
+		type: CLIENTS_SUCCESS,
+		payload: clients
+	};
+};
+
+export const clientsError = error => {
+	return {
+		type: CLIENTS_ERROR,
 		payload: error
 	};
 };

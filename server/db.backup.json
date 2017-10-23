@@ -32,27 +32,9 @@
     }
   ],
   "users": [
-    {
-      "id": 1,
-      "name": "admin",
-      "password": "admin",
-      "client": 1,
-      "admin": true
-    },
-    {
-      "id": 2,
-      "name": "Utilisateur2",
-      "password": "ddd",
-      "client": 2,
-      "admin": false
-    },
-    {
-      "id": 3,
-      "name": "Utilisateur3",
-      "password": "admaaain",
-      "client": 3,
-      "admin": true
-    }
+    { "id": 1, "name": "admin", "password": "admin", "client": 1, "admin": true },
+    { "id": 2, "name": "Utilisateur2", "password": "ddd", "client": 2, "admin": false },
+    { "id": 3, "name": "Utilisateur3", "password": "admaaain", "client": 3, "admin": true }
   ],
   "events": [
     {
@@ -117,35 +99,14 @@
     }
   ],
   "event-types": [
-    {
-      "id": 1,
-      "label": "Ponctuel"
-    },
-    {
-      "id": 2,
-      "label": "Etat"
-    }
+    { "id": 1, "label": "Ponctuel" },
+    { "id": 2, "label": "Etat" }
   ],
   "client-types": [
-    {
-      "id": 1,
-      "label": "Type Client 1"
-    },
-    {
-      "id": 2,
-      "label": "Type Client 2"
-    },
-    {
-      "id": 3,
-      "label": "Type Client 3"
-    },
-    {
-      "id": 4,
-      "label": "Type Client 4"
-    },
-    {
-      "id": 5,
-      "label": "Type Client 5"
-    }
+    { "id": 1, "label": "Type Client 1" },
+    { "id": 2, "label": "Type Client 2" },
+    { "id": 3, "label": "Type Client 3" },
+    { "id": 4, "label": "Type Client 4" },
+    { "id": 5, "label": "Type Client 5" }
   ]
 }

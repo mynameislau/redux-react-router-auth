@@ -19,15 +19,35 @@ export const login = credentials => {
 };
 
 export const logout = token => {
-	localStorage.setItem('appToken', null);
 	return fetch('http://localhost:3200/logout', {
 		method: 'POST',
 		headers: {
-			'Content-Type': 'applicationi/json'
+			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
 			token
 		})
+	})
+		.then(response => response.json())
+		.then(json => {
+			console.log(json);
+
+			if (json.success) {
+				localStorage.setItem('appToken', null);
+				return null;
+			}
+
+			return Promise.reject(json.data.message);
+		});
+};
+
+export const fetchClients = token => {
+	return fetch('http://localhost:3200/clients', {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Basic ${btoa(`${token}:`)}`
+		}
 	})
 		.then(response => response.json())
 		.then(json => {

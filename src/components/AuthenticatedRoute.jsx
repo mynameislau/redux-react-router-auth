@@ -6,7 +6,7 @@ const mapStateToProps = state => ({
 	token: state.auth.token
 });
 
-export default connect(mapStateToProps)(
-	({ children, token }) =>
-		token ? children : <Redirect to="/login" />
-);
+export default connect(mapStateToProps)(({ children, token }) => {
+	console.log('yeas,', token);
+	return token ? children : <Redirect to="/login" />;
+});

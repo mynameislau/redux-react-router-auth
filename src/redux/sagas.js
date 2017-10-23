@@ -2,12 +2,16 @@ import { all, call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 import {
 	LOGIN_REQUEST,
 	LOGOUT_REQUEST,
+	CLIENTS_REQUEST,
 	loginSuccess,
 	loginError,
 	logoutSuccess,
-	logoutError
+	logoutError,
+	clientsSuccess,
+	clientsError
 } from './actions';
-import { login, logout } from '../services/main-service';
+
+import { login, logout, fetchClients } from '../services/main-service';
 
 const authSaga = function *(action) {
 	console.log('authSaga');
@@ -25,6 +29,7 @@ const logoutSaga = function *(action) {
 	console.log('logout saga');
 	try {
 		yield call(logout, action.payload);
+		yield put(logoutSuccess());
 	}
 	catch (error) {
 		console.error(error);
@@ -32,10 +37,23 @@ const logoutSaga = function *(action) {
 	}
 };
 
+const clientsSaga = function *(action) {
+	console.log('clientsSaga');
+	try {
+		const list = yield call(fetchClients, action.payload);
+		yield put(clientsSuccess(list));
+	}
+	catch (error) {
+		console.error(error);
+		yield put(clientsError(error.toString()));
+	}
+};
+
 export const mainSaga = function *mainSaga () {
 	yield all([
 		takeLatest(LOGIN_REQUEST, authSaga),
-		takeLatest(LOGOUT_REQUEST, logoutSaga)
+		takeLatest(LOGOUT_REQUEST, logoutSaga),
+		takeLatest(CLIENTS_REQUEST, clientsSaga)
 	]);
 };
 
